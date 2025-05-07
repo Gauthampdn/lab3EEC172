@@ -36,7 +36,7 @@
 //
 //*****************************************************************************
 
-// This file was automatically generated on 4/28/2025 at 12:09:33 PM
+// This file was automatically generated on 5/6/2025 at 6:41:42 PM
 // by TI PinMux version 1.15.0+2826
 //
 //*****************************************************************************
@@ -57,23 +57,14 @@ void PinMuxConfig(void)
     //
     // Set unused pins to PIN_MODE_0 with the exception of JTAG pins 16,17,19,20
     //
-    PinModeSet(PIN_01, PIN_MODE_0);
-    PinModeSet(PIN_02, PIN_MODE_0);
     PinModeSet(PIN_03, PIN_MODE_0);
     PinModeSet(PIN_04, PIN_MODE_0);
-    PinModeSet(PIN_05, PIN_MODE_0);
-    PinModeSet(PIN_06, PIN_MODE_0);
-    PinModeSet(PIN_07, PIN_MODE_0);
-    PinModeSet(PIN_08, PIN_MODE_0);
-    PinModeSet(PIN_15, PIN_MODE_0);
-    PinModeSet(PIN_18, PIN_MODE_0);
     PinModeSet(PIN_21, PIN_MODE_0);
     PinModeSet(PIN_45, PIN_MODE_0);
     PinModeSet(PIN_52, PIN_MODE_0);
     PinModeSet(PIN_53, PIN_MODE_0);
     PinModeSet(PIN_59, PIN_MODE_0);
     PinModeSet(PIN_60, PIN_MODE_0);
-    PinModeSet(PIN_62, PIN_MODE_0);
     PinModeSet(PIN_63, PIN_MODE_0);
     PinModeSet(PIN_64, PIN_MODE_0);
     
@@ -81,6 +72,10 @@ void PinMuxConfig(void)
     // Enable Peripheral Clocks 
     //
     PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK);
+    PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK);
+    PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK);
+    PRCMPeripheralClkEnable(PRCM_I2CA0, PRCM_RUN_MODE_CLK);
+    PRCMPeripheralClkEnable(PRCM_GSPI, PRCM_RUN_MODE_CLK);
     PRCMPeripheralClkEnable(PRCM_UARTA0, PRCM_RUN_MODE_CLK);
 
     //
@@ -90,14 +85,62 @@ void PinMuxConfig(void)
     GPIODirModeSet(GPIOA0_BASE, 0x8, GPIO_DIR_MODE_IN);
 
     //
-    // Configure PIN_61 for UART0 UART0_RTS
+    // Configure PIN_08 for GPIO Output
     //
-    PinTypeUART(PIN_61, PIN_MODE_5);
+    PinTypeGPIO(PIN_08, PIN_MODE_0, false);
+    GPIODirModeSet(GPIOA2_BASE, 0x2, GPIO_DIR_MODE_OUT);
 
     //
-    // Configure PIN_50 for UART0 UART0_CTS
+    // Configure PIN_15 for GPIO Output
     //
-    PinTypeUART(PIN_50, PIN_MODE_12);
+    PinTypeGPIO(PIN_15, PIN_MODE_0, false);
+    GPIODirModeSet(GPIOA2_BASE, 0x40, GPIO_DIR_MODE_OUT);
+
+    //
+    // Configure PIN_18 for GPIO Output
+    //
+    PinTypeGPIO(PIN_18, PIN_MODE_0, false);
+    GPIODirModeSet(GPIOA3_BASE, 0x10, GPIO_DIR_MODE_OUT);
+
+    //
+    // Configure PIN_01 for I2C0 I2C_SCL
+    //
+    PinTypeI2C(PIN_01, PIN_MODE_1);
+
+    //
+    // Configure PIN_02 for I2C0 I2C_SDA
+    //
+    PinTypeI2C(PIN_02, PIN_MODE_1);
+
+    //
+    // Configure PIN_50 for SPI0 GSPI_CS
+    //
+    PinTypeSPI(PIN_50, PIN_MODE_9);
+
+    //
+    // Configure PIN_05 for SPI0 GSPI_CLK
+    //
+    PinTypeSPI(PIN_05, PIN_MODE_7);
+
+    //
+    // Configure PIN_06 for SPI0 GSPI_MISO
+    //
+    PinTypeSPI(PIN_06, PIN_MODE_7);
+
+    //
+    // Configure PIN_07 for SPI0 GSPI_MOSI
+    //
+    PinTypeSPI(PIN_07, PIN_MODE_7);
+
+    //
+    // Configure PIN_62 for UART0 UART0_RTS
+    //
+    PinTypeUART(PIN_62, PIN_MODE_10);
+
+    //
+    // Configure PIN_61 for UART0 UART0_CTS
+    //
+    PinTypeUART(PIN_61, PIN_MODE_6);
 
     //
     // Configure PIN_55 for UART0 UART0_TX
